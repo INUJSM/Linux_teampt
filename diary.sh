@@ -52,6 +52,11 @@ function show_list() {
 # 핵심 기능 함수
 # --------------------------------------------------------
 
+# 0. GitHub 레포지토리 및 토큰 설정
+function setup_github() {
+    return
+}
+
 # 1. 일기 쓰기 기능
 function write_diary() {
     
@@ -82,6 +87,11 @@ function sync_diary() {
     return
 }
 
+# 7. 프로그램 설치
+function install_program() {
+    return
+}
+
 # --------------------------------------------------------
 # 메인 루프
 # --------------------------------------------------------
@@ -90,24 +100,28 @@ while true; do
     print_line
     echo "      Secret Database Diary"
     print_line
+    echo " 0. GitHub 설정 (토큰/주소 변경)"
     echo " 1. 일기 쓰기"
     echo " 2. 일기 조회"
     echo " 3. 일기 수정"
     echo " 4. 일기 삭제"
     echo " 5. 일기 백업 (Push)"
     echo " 6. 동기화    (Pull)"
+    echo " 7. 설치      (명령어 등록)"
     echo " q. 종료"
     print_line
     echo -n " 메뉴 선택: "
     read choice
 
     case "$choice" in
+        0) setup_github ;;
         1) write_diary ;;
         2) read_diary ;;
         3) edit_diary ;;
         4) delete_diary ;;
         5) backup_diary ;;
         6) sync_diary ;;
+        7) install_program ;;
         q) echo " 프로그램을 종료합니다."; exit 0 ;;
         *) echo " 잘못된 입력입니다." ;;
     esac
