@@ -56,6 +56,16 @@ function show_list() {
 function setup_github() {
     print_line
     echo " >> [0] GitHub 연결 설정 (레포지토리 & 토큰)"
+
+    if [ ! -d ".git" ]; then
+        echo " [알림] 현재 폴더가 Git 저장소가 아닙니다."
+        echo "        자동으로 Git 저장소로 초기화합니다..."
+        git init
+        git branch -M main
+        echo " [완료] Git 초기화 성공 (현재 브랜치: main)"
+        echo ""
+    fi
+    
     current_url=$(git remote get-url origin 2>/dev/null)
     
     if [ $? -eq 0 ] && [ -n "$current_url" ]; then
